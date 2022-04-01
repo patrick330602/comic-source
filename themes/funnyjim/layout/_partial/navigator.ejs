@@ -1,0 +1,18 @@
+<nav>
+  <% var sorted = site.posts.sort('date').toArray() %>
+  <% if (page.next){ %>
+    <a class="post-nav-title" href="<%- url_for(sorted[0].path) %>">First</a>&nbsp;&nbsp;
+    <a class="post-nav-title" href="<%- url_for(page.next.path) %>">Prev</a>&nbsp;&nbsp;
+  <% } else { %>
+    First&nbsp;&nbsp;
+    Prev&nbsp;&nbsp;
+  <% } %>
+    <a class="post-nav-title" id="random" href="#">Random</a>&nbsp;&nbsp;
+  <% if (page.prev){ %>
+    <a class="post-nav-title" href="<%- url_for(page.prev.path) %>">Next</a>&nbsp;&nbsp;
+    <a class="post-nav-title" href="<%- url_for(sorted.slice(-1)[0].path) %>">Last</a>
+  <% } else { %>
+    Next&nbsp;&nbsp;
+    Last
+  <% } %>
+</nav>

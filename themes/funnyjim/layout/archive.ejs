@@ -1,0 +1,25 @@
+<h2>Archives </h2>
+
+<section>
+    <% page.posts.each(function (post) { %>
+        <div>
+          <time><b><%= date(post.date) %></b></time> - 
+          <a  href="<%- url_for(post.path) %>"><%= post.title || __('untitled')%></a>
+        </div>
+
+    <% }) %>
+</section>
+
+<% if (page.total > 1){ %>
+<% if (page.prev) { %>
+<a href="<%- url_for(page.prev_link) %>">Prev</a>
+<% } else {%>
+Prev
+<% } %>
+<%= page.current %>
+<% if (page.next) { %>
+<a href="<%- url_for(page.next_link) %>">Next</a>
+<% } else {%>
+Next
+<% } %>
+<% } %>

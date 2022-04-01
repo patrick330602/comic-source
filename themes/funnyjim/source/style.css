@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+  background-color: #fff !important;
+}
+
+h2:before,
+h3:before {
+  content: "" !important;
+}
+
+section {
+  text-align: left !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #222 !important;
+  }
+}
