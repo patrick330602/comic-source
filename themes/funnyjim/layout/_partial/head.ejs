@@ -25,9 +25,9 @@
   //<![CDATA[
     <% var tmp_list = "";
     site.posts.toArray().forEach((i, ind, array)=>{
-      tmp_list = tmp_list + '"'+url_for(i.path)+'"'
-      if (ind < array.length-1){
-        tmp_list = tmp_list + ','
+      if (i.path !== page.path) {
+        tmp_list = tmp_list + '"'+url_for(i.path)+'"';
+        if (ind < array.length-1) tmp_list = tmp_list + ',';
       }
     }) %>
   function getCookie(cname) {
