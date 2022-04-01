@@ -1,0 +1,29 @@
+name: CD
+on: [push]
+jobs:
+  build:
+    name: Generate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 12
+      - name: Pre-configuration
+        run: |
+          npm install
+          npm install hexo-cli -g
+      - name: Generate
+        run: |
+          hexo clean
+          hexo generate
+      - name: Deploy
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USERNAME }}
+          key: ${{ secrets.DEPLOY_KEY }}
+          source: "public/*"
+          target: "/var/www/comic/"
+          overwrite: true
+          strip_components: 1
