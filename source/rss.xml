@@ -29,6 +29,8 @@
       <description>{{ post.intro }}</description>
       {% elif post.excerpt %}
       <description>{{ post.excerpt }}</description>
+      {% elif post.comic %}
+      <description>{{ '<p><img src="' + post.comic + '"/></p>' + post.content }}</description>
       {% elif post.content %}
         {% set short_content = post.content.substring(0, config.feed.content_limit) %}
         {% if config.feed.content_limit_delim %}
@@ -45,9 +47,7 @@
       {% if post.image %}
       <enclosure url="{{ url + post.image | uriencode }}" type="image"/>
       {% endif %}
-      {% if post.comic %}
-      <content:encoded><![CDATA[{{ ' <p><img src="' + post.comic + '"/></p>' + post.content | noControlChars }}]]></content:encoded>
-      {% elif config.feed.content and post.content %}
+      {% if config.feed.content and post.content %}
       <content:encoded><![CDATA[{{ post.content | noControlChars | safe }}]]></content:encoded>
       {% endif %}
       {% for category in post.categories.toArray() %}
