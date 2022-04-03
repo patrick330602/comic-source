@@ -46,7 +46,7 @@
       <enclosure url="{{ url + post.image | uriencode }}" type="image"/>
       {% endif %}
       {% if post.comic %}
-      <content:encoded><![CDATA[{{ ' <p><img src="' + post.comic + '"/></p>' + post.content | noControlChars | safe }}]]></content:encoded>
+      <content:encoded><![CDATA[{{ ' <p><img src="' + post.comic + '"/></p>' + post.content | noControlChars }}]]></content:encoded>
       {% elif config.feed.content and post.content %}
       <content:encoded><![CDATA[{{ post.content | noControlChars | safe }}]]></content:encoded>
       {% endif %}
