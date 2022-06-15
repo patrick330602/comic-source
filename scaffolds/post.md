@@ -1,5 +1,5 @@
 ---
 title: {{ title }}
 date: {{ date }}
-tags:
+comic: https://cdn.patrickwu.space/comic/{{ title }}.png
 ---
